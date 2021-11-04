@@ -1,0 +1,128 @@
+\RequirePackage[2020-02-02]{latexrelease}
+\documentclass[8pt,landscape]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{systeme}
+\usepackage{nicefrac}
+\usepackage{accents}
+\usepackage{enumitem}
+\usepackage[printwatermark]{xwatermark}
+\usepackage{tikz}
+\usepackage[compact]{titlesec}
+\usepackage{microtype}
+\usepackage[flushleft]{threeparttable}
+\usepackage{textcomp}
+\usepackage{pdflscape}
+\usepackage{pifont}
+\usepackage{pgfplots}
+\usepackage{icomma}
+\usepackage{wrapfig}
+\usepackage[type={CC}, modifier={by-nc-sa}, version={4.0}]{doclicense}
+
+% Page margins
+\geometry{top=0.5cm,left=0.5cm,right=0.5cm,bottom=0.5cm}
+
+% Tikz
+\usetikzlibrary{calc,matrix}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Reduce size of \section e \subsection
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing{\section}{0pt}{0ex}{-0.5ex}
+\titlespacing{\subsection}{0pt}{0ex}{-0.5ex}
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlist[itemize]{noitemsep, nolistsep}
+
+% \newwatermark[allpages,color=black!10,angle=45,scale=6,xpos=-20,ypos=15]{BOZZA}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+{\Large{\textbf{Matematica del discreto}}}
+
+% Relazioni
+
+\input{relazioni/relazioni}
+
+% Congruenze
+
+\input{congruenze/diofantee}
+\input{congruenze/congruenze-lineari}
+\input{congruenze/teorema-resto-cinese}
+\input{congruenze/phi}
+
+% Strutture algebriche
+
+\input{strutture-algebriche/gruppi}
+\input{strutture-algebriche/anelli}
+\input{strutture-algebriche/gruppi-permutazione}
+
+% Matrici
+
+\input{matrici/determinante}
+\input{matrici/sistemi-lineari}
+\input{matrici/rango}
+\input{matrici/autovalori-autovettori}
+\input{matrici/matrici-simili}
+
+% Spazi vettoriali
+
+\input{spazi-vettoriali/spazi-vettoriali}
+\input{spazi-vettoriali/omomorfismo}
+\input{spazi-vettoriali/omomorfismi-matrici}
+\input{spazi-vettoriali/diagonalizzazione}
+
+% Geometria
+
+\input{geometria/vettori}
+\input{geometria/rette-2d}
+\input{geometria/rette-3d}
+\input{geometria/piani-3d}
+
+\rule{29em}{0.4pt}
+
+\begin{wrapfigure}[3]{r}{8em}
+	\vspace{-1.3em}
+	\centering
+	\doclicenseImage[imagewidth=7em]
+\end{wrapfigure}
+
+Basato sul corso \emph{Matematica del discreto} A.A. 2020/2021 del docente Luperi Baglini Lorenzo. \\
+
+Copyright \copyright \, 2022 Alessandro Bortolin.
+
+\doclicenseText
+\end{multicols}
+\end{document}

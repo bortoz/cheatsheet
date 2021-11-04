@@ -1,0 +1,27 @@
+\section{Determinante}
+$\det: M_{n,n}(K) \rightarrow K$
+
+\begin{tabularx}{\textwidth}{lX}
+	$n = 1$ & $A = [a] \quad \det{A} = a$ \\
+	$n > 1$ &
+	Ricorsivamente \newline
+	$A_{ij}$ ottenuta da $A$ togliendo riga $i$ e colonna $j$ \newline
+	$M_{ij} = \det A_{ij}$ (detto minore complementare) \newline
+	$C_{ij} = (-1)^{i+j}M_{ij}$ (detto complemento algebrico) \newline
+	$\det A = \sum_{i=1}^{n} a_{1i}C_{1i}$ \\
+\end{tabularx}
+
+Th di Laplace: si può usare una riga o una colonna qualsiasi.
+
+\begin{tabular}{l}
+	$\det A = \det A^T$ \\
+	Se una riga o colonna ha tutti zeri: $\det A = 0$ \\
+	Se si scambiano 2 righe: $\det A' = -\det A$ \\
+	Se due righe sono uguali: $\det A = 0$ \\
+	Moltiplicando una riga: $\det A' = k\det A$, $\det kA = k^n\det A$ \\
+	Sommando ad una riga un'altra riga: $\det A' = \det A$ \\
+	In una matrice triangolare: $\det A = \prod_{i=1}^{n} a_{ii}$ \\
+	Teorema di Binet: $\det AB = \det A \cdot \det B$ \\
+	$A$ è inveribile se e solo se: $\det A \neq 0$ \\
+	Se $A$ è invertibile allora: $\det A^{-1} = (\det A)^{-1}$ \\
+\end{tabular}
