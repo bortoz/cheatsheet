@@ -1,0 +1,273 @@
+\RequirePackage[2020-02-02]{latexrelease}
+\documentclass[10pt,landscape]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{verbatim}
+\usepackage{systeme}
+\usepackage{nicefrac}
+\usepackage{accents}
+\usepackage{enumitem}
+\usepackage[printwatermark]{xwatermark}
+\usepackage{tikz}
+\usepackage[compact]{titlesec}
+\usepackage{microtype}
+\usepackage[flushleft]{threeparttable}
+\usepackage{textcomp}
+\usepackage{pdflscape}
+\usepackage{pifont}
+\usepackage{pgfplots}
+\usepackage{icomma}
+\usepackage{wrapfig}
+\usepackage[type={CC}, modifier={by-nc-sa}, version={4.0}]{doclicense}
+
+% Page margins
+\geometry{top=0.5cm,left=0.5cm,right=0.5cm,bottom=0.5cm}
+
+% Tikz
+\usetikzlibrary{calc,matrix}
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Reduce size of \section e \subsection
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+% \titlespacing{\section}{0pt}{0ex}{-0.5ex}
+% \titlespacing{\subsection}{0pt}{0ex}{-0.5ex}
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+\setlist[itemize]{noitemsep, nolistsep}
+
+% \newwatermark[allpages,color=black!10,angle=45,scale=6,xpos=-20,ypos=15]{BOZZA}
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+{\Large{\textbf{Statistica e analisi dati}}}
+
+\section{Nozioni base di probabilità}
+$P(A) + P(\neg A) = 1$ \\
+$P(A \cup B) + P(A \cap B) = P(A) + P(B)$ \\
+$P(A \cap B) = P(A) \cdot P(B | A)$ \\
+$P(A \cap B) = P(A) \cdot P(B)$ se $A$ e $B$ sono indipendenti. \\
+$P(B) = \sum_{i=1}^n P(A_i) P(B | A_i)$ \\
+
+\subsection{Teorema di Bayes}
+$P(A | B) = \frac{P(A) P(B | A)}{P(B)} = \frac{P(A \cap B)}{P(B)}$ \\
+
+\section{Nozioni base di statistica}
+
+Momento sul discreto: $\left\langle x^r \right\rangle = \frac{1}{n} \sum_{i=1}^n x_i^r$ \\
+Momento sul continuo: $\left\langle x^r \right\rangle = \int_{-\infty}^{+\infty} x^rf(x) \, dx$ \\
+Media/valore atteso: $\mu = \bar{x} = \left\langle x \right\rangle$ \\
+Mediana: $F(x) = \frac{1}{2}$ \\
+Primo quartile: $F(x) = \frac{1}{4}$ \\
+Terzo quartile: $F(x) = \frac{3}{4}$ \\
+Intervallo interquartile: $\Delta = x_{(3\text{° quartile})} - x_{(1\text{° quartile})}$ \\
+Varianza: $\sigma^2 = \left\langle \left( x - \bar{x} \right)^2 \right\rangle = \left\langle x^2 \right\rangle - \left\langle x \right\rangle^2$ \\
+Deviazione standard: $\sigma = \sqrt{\sigma^2}$ \\
+Momento standard: $\mu_r = \frac{\left\langle \left( x - \bar{x} \right)^r \right\rangle}{\sigma^r}$ \\
+% TODO: momento centrale?
+Skweness: $\mu_3$ \\
+Curtosi: $\mu_4$ \\
+Funzione di fallibilità: $F(x) = \int_{-\infty}^{x} f(t)dt$ \\
+Funzione di sopravvivenza: $S(x) = 1 - F(x)$ \\
+
+\section{Teorema di Chebyshev}
+In un intervallo entro due volte la deviazione standard dalla media, è contenuto almento il $75\%$ della probabilità. \\
+
+\section{Distribuzioni}
+
+\subsection{Distribuzione uniforme}
+Funzione di densità: $f(t) = \begin{cases}
+	\frac{1}{b - a} & \text{se } a \le t \le b \\
+	0 & \text{altrimenti} \\
+\end{cases}$ \\
+Funzione cumulativa: $F(t) = \begin{cases}
+	0 & \text{se } t < a \\
+	\frac{x - a}{b - a} & \text{se } a \le t \le b \\
+	1 & \text{se } t > b \\
+\end{cases}$ \\
+Media/valore atteso: $\frac{a + b}{2}$ \\
+Mediana: $\frac{a + b}{2}$ \\
+Varianza: $\frac{(b - a)^2}{12}$ \\
+
+\subsection{Distribuzione geometrica}
+La distribuzione geometrica esprime la probabilità che occorra attendere esattamente $i$ tentativi per avere il primo successo.
+La distribuzione geometrica è \textbf{senza memoria}. \\
+
+\vspace{1em}
+
+Funzione di densità: $\mathcal{G}(i \, | \, p) = pq^{i-1}$ \\
+Funzione cumulativa: $1 - q^i$ \\
+Media/valore atteso: $\frac{1}{p}$ \\
+Moda: $1$ \\
+Varianza: $\frac{q}{p^2}$ \\
+
+\subsection{Distribuzione binomiale}
+La distribuzione binomiale esprime la probabilità di avere esattamente $k$ successi su $n$ tentativi. \\
+
+\vspace{1em}
+
+Funzione di densità: $\mathcal{B}(k \, | \, p, n) = \binom{n}{k}p^{k}q^{n-k}$ \\
+Media/valore atteso: $np$ \\
+Mediana: $\lfloor np \rfloor$ o $\lceil np \rceil$ \\
+Moda: $\lfloor (n+1)p \rfloor$ o $\lceil (n+1)p \rceil -1$ \\
+Varianza: $npq$ \\
+
+\subsection{Distribuzione esponenziale}
+La distribuzione esponenziale esprime la probabilità di attendere esattamente un tempo $t$ per avere il primo evento. \\
+La distribuzione esponenziale è \textbf{senza memoria}. \\
+
+\vspace{1em}
+
+Funzione di densità: $f(t \, | \, \lambda) = \lambda e^{-\lambda t}$ \\
+Funzione cumulativa: $1 - e^{-\lambda t}$ \\
+Media/valore atteso: $\frac{1}{\lambda}$ \\
+Mediana: $\frac{\text{ln} 2}{\lambda}$ \\
+Moda: $0$ \\
+Varianza: $\frac{1}{\lambda^2}$ \\
+
+\subsection{Distribuzione di Poisson}
+La distribuzione di Poisson esprime la probabilità di avere esattamente $k$ eventi in un intervallo di tempo quando la media di eventi è $\mu$. \\
+La distribuzione di Poisson viene anche usata per approssimare la distribuzione binomiale quando $n$ è molto grande e $p$ molto piccolo. \\
+Data una distribuzione esponenziale, la relativa distribuzione di conteggio è una distribuzione di Poisson dove $\mu = \lambda \Delta t$.
+
+\vspace{1em}
+
+Funzione di densità: $\mathcal{P}(k \, | \, \mu = np) = \frac{\mu ^{k}}{k!} e^{-\mu}$ \\
+Media/valore atteso: $\mu$ \\
+Moda: $\lceil \mu \rceil -1$ e $\lfloor \mu \rfloor$ \\
+Varianza: $\mu$ \\
+Merge: ovrapponendo due processi Poissoniani con rate $\lambda_1$ e $\lambda_2$, ottengo un processo Poissoniano di rate $\lambda$. \\
+Split: dato un processo Poissoniano di rate $\lambda$, estraendo ogni evento con probabilità $p$, ottengo due processi Poissoniani di rate $p\lambda$ e $(1 - p)\lambda$. \\
+
+\subsection{Distribuzione normale (Gaussiana)}
+La distribuzione di Poisson viene usata per approssimare la distribuzione binomiale quando $n$ è molto grande e $p$ è ``lontato'' da $0$ e $1$.
+
+\vspace{1em}
+
+Funzione di densità: $\mathcal{N}(x \, | \, \mu, \sigma) = \frac{1}{\sqrt{2\pi \sigma ^{2}}} e^{-{\frac{1}{2}}\frac{(x - \mu)^2}{\sigma^2}}$ \\
+Media/valore atteso: $\mu$ \\
+Mediana: $\mu$ \\
+Moda: $\mu$ \\
+Varianza: $\sigma^2$ \\
+Standardizzazione: $\mathcal{N}(x \, | \, \mu, \sigma) = \mathcal{N}(z \, | \, 0, 1)$, per $z = \frac{x - \mu}{\sigma}$ \\
+Legge tre sigma:
+\begin{itemize}
+	\item $P(\mu - 1\sigma \le X \le \mu + 1\sigma) \approx 68,27\%$
+	\item $P(\mu - 2\sigma \le X \le \mu + 2\sigma) \approx 95,45\%$
+	\item $P(\mu - 3\sigma \le X \le \mu + 3\sigma) \approx 99,73\%$
+\end{itemize}
+
+\section{Distribuzione ipergeometrica}
+La distribuzione ipergeometrica esprime la probabilità di estrarre senza reinserimento $g$ palline vincenti su $n$ estratte da un'urna contenente $G$ palline vincenti e $B$ palline perdenti.
+
+\vspace{1em}
+
+Funzione di densità: $\displaystyle \mathcal{H}(g \, | \, n, G, B) = \frac{\binom{G}{g}\binom{B}{n - g}}{\binom{G + B}{n}}$ \\
+
+\section{Somma di variabili aleatorie}
+Media: $\mu_Z = \mu_X + \mu_Y$ \\
+Varianza: $\sigma_Z^2 = \sigma_X^2 + \sigma_Y^2$ se $X$ e $Y$ sono indipendenti \\
+
+\section{Distribuzioni campionarie}
+Minimo campionario: $f_{\text{min}}(t) = n f(t) \left ( S \left( t \right) \right)^{n - 1}$ \\
+Massimo campionario: $f_{\text{max}}(t) = n f(t) \left ( F \left( t \right) \right)^{n - 1}$ \\
+Media campionaria: una distribuzione di media $\mu$ e varianza $\frac{\sigma^2}{n}$ \\
+
+\section{Teorema del limite centrale}
+Sommando variabili aleatorie indipendenti con distribuzioni qualsiasi, purché dotate di varianza finita, ottengo, nel limite, una variabile Gaussiana: $f_{\text{avg}}(t) = \mathcal{N}\left( t \, | \, \mu, \frac{\sigma^2}{n} \right)$ \\
+
+\section{Correlazione}
+Codevianza: $\operatorname{cod}(x, y) = \sum_{i=1}^n (x_i - \mu_x)(y_i - \mu_y)$ \\
+Covarianza: $\operatorname{cov}(x, y) = \frac{\operatorname{cod}(x, y)}{n}$ \\
+Coefficiente di Pearson: $\rho_{x, y} = \frac{\operatorname{cov}(x, y)}{\sigma_x \sigma_y}$ \\
+\begin{itemize}
+	\item $\rho < 0$: correlazione negativa;
+	\item $\rho = 0$: nessuna correlazione;
+	\item $\rho > 0$: correlazione positiva;
+	\item $0\phantom{,0} \le |\rho| < 0,3$: correlazione debole;
+	\item $0,3 \le |\rho| < 0,7$: correlazione moderata;
+	\item $0,7 \le |\rho| < 1\phantom{,0}$: correlazione forte;
+	\item $|\rho| = 1$: correlazione perfetta;
+\end{itemize}
+Coefficiente di Spearman: $r_s = \rho_{\operatorname{R}(X),\operatorname{R}(Y)} = \frac{\operatorname{cov}(\operatorname{R}(X),\operatorname{R}(Y))}{\sigma_{\operatorname{R}(X)}\sigma_{\operatorname{R}(Y)}}$ \\
+Dove $R(x)$ è il rango di $x$, ovvero la posizione di $x$ all'intero di $X$. \\
+
+\section{Stima della media}
+Dato un campione di $n$ eventi indipendenti da una popolazione con varianza finita $\sigma^2$ e media empirica $m$, la media ``vera'' è distribuita secondo una distribuzione gaussiana con media $m$ e deviazione standard $\frac{\sigma}{\sqrt{n}}$. \\
+Con varianza non nota si usa la varianza empirica: $s^2 = \frac{\sum (x_i - m)^2}{n - 1}$ \\
+Media stimata: $\mu_{(\text{stima})} = m \pm \frac{\sigma}{\sqrt{n}}$ \\
+Intervallo di confidenza del $68\%$: $\phantom{,3} [m - \phantom{1}\frac{\sigma}{\sqrt{n}} \, ; \, m + \phantom{1}\frac{\sigma}{\sqrt{n}}]$ \\
+Intervallo di confidenza del $95\%$: $\phantom{,5} [m - 2\frac{\sigma}{\sqrt{n}} \, ; \, m + 2\frac{\sigma}{\sqrt{n}}]$ \\
+Intervallo di confidenza del $99,7\%$: $[m - 3\frac{\sigma}{\sqrt{n}} \, ; \, m + 3\frac{\sigma}{\sqrt{n}}]$ \\
+
+Stima della probabilità in una dist. bernulliana: $p_{(\text{stima})} = \frac{k}{n} \pm \frac{\sqrt{k}}{n}$ \\
+
+\vspace{0.3em}
+
+\rule{29em}{0.4pt}
+
+\vspace{0.7em}
+
+\begin{wrapfigure}[3]{r}{8em}
+	\vspace{-1.5em}
+	\centering
+	\doclicenseImage[imagewidth=7em]
+\end{wrapfigure}
+
+Basato sul corso \emph{Statistica e analisi dei dati} A.A. 2021/2022 del docente Gianini Gabriele. \\
+
+Copyright \copyright \, 2022 Alessandro Bortolin.
+
+\doclicenseText
+
+\end{multicols}
+
+\pagebreak
+
+\begin{landscape}
+	{\Huge $\phantom{}$ \break \break \break}
+
+	\centering
+	{\huge Tavola della distribuzione normale standardizzata} \break
+
+	\centering
+	{\large $\mathcal{N}(x \, | \, \mu = 0, \sigma = 1)$}
+
+	\centering
+	\input{table-graph}
+
+	\centering
+	{\large\input{table}}
+\end{landscape}
+
+\end{document}
